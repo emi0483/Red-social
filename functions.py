@@ -83,7 +83,7 @@ def verusuarios(): #Lista de los nombres de los usuarios registrados en la red s
 def enviarsolicitudesdeamistad(): #Envio de solicitudes a base de lista de amigos
     pass
 
-def listaamigos():
+def listaamigos(): #Informacion almacenada en la lista de amigos
     pass
 
 def solipendientes():#Muestra las solicitudes de amistad y permite aceptarlas o rechazarlas
