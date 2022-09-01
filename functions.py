@@ -1,3 +1,5 @@
+import main.py
+
 def signin(): #Registro
     '''
     Funcion con el objetivo de hacer el registro de usuarios.
@@ -15,6 +17,8 @@ def signin(): #Registro
                     
     '''
     
+    print ("Bienvenid@ a Redix. En este Porfavor llena el formulario para realizar tu registro.")
+    
     print ("Recuerde que no debe incluir números ni caractéres especiales.")
     user_name=input("Ingrese su nombre de usuario: ")
     
@@ -31,17 +35,10 @@ def signin(): #Registro
     #total = num1 + 100
     #print("The result is ", total)
     
-    while user_name.isalpha() == False:
+    while user_name.isalpha() == False: #Comprobacion de texto 
         print ("Recuerde que no debe incluir números ni caractéres especiales.")
         user_name=input("Ingrese su nombre de usuario: ")
     
-def login(): #Ingresar
-    
-    '''
-    
-    '''
-    
-    print ("Bienvenid@ a Redix. Porfavor llena el formulario para realizar tu registro.")
     name=input("Nombre: ")
     lastname=input("Apellido: ")
     print ("Recuerde que no debe incluir números ni caractéres especiales.")
@@ -57,24 +54,49 @@ def login(): #Ingresar
     user_name=("Nombre de usuario (los números y los caracteres especiales no están permitidos): ")
     passw=("Contraseña: ")
     valpassw=("Contraseña nuevamente: ")
-
+    
 def valpassword(passw,valpassw): #Validacion de contraseñar para Log in
     if passw!=valpassw:
         print("Las contraseñas no coinciden. Verifique.")
+    
+def login(): #Ingresar
+    
+    '''
+    Esta funcion nos permite realizar el inicio de sesion de un usuario
+    
+    '''
+    #Buscar que el username ingresado no exista en la base de datos
+    #Si este no ha sido ingresadopedir la contraseña
+    #Si ya esta registrado pedir la clave
+    #Verificar si la clave coincide
+    #Si la clave coincide acceder al menu
+
+def menu(): #Aqui podremos ver todo el menu de la redsocial que se activa despues de iniciar sesion
+     verusuarios()
+     listaamigos()
+     solipendientes()
+     #Ver amigoss recomendados por gustos
         
 def verusuarios(): #Lista de los nombres de los usuarios registrados en la red social
     pass
+
 def enviarsolicitudesdeamistad(): #Envio de solicitudes a base de lista de amigos
     pass
+
 def listaamigos():
     pass
+
 def solipendientes():#Muestra las solicitudes de amistad y permite aceptarlas o rechazarlas
     pass
+
 def gustosencomun(): #Compara los gustos del usuario y lo recomienda como amigos si son similares
     pass
+
 def vermensajes():
     pass
+
 def enviarmensajes(): #Permite enviar imagenes a tus amigos
     pass
+
 def cerrarsesion(): #Cierra sesion y guarda informacion
     pass
