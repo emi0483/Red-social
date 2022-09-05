@@ -101,6 +101,51 @@ def login(): #Ingresar
     #Si la clave coincide acceder al menu
 
 def menu(): #Aqui podremos ver todo el menu de la redsocial que se activa despues de iniciar sesion
+    bandera= False
+    print("Hola ", user, " a Redix. Selecione el número de la operación que desea realizar: ")
+    print("¿Que deseas hacer hoy? ")
+    print("(1) Ver usuarios registrados") 
+    print("(2) Enviar  solicitudes de amistad")
+    print("(3) Ver solicitudes de amistad pendientes") 
+    print("(4) Ver mis mensajes")
+    print("(5) Enviar mensaje a un amigo")
+    print("(6) Ver amigos recomendados")
+    print("(7) Cerrar sesion")
+    opciones=int(input())
+    while bandera == False:
+        if opciones==1:
+            fn.verusuarios()
+            bandera=True
+        elif opciones==2:
+            fn.enviarsolicitudesdeamistad()
+            bandera=True
+        elif opciones ==3:
+            fn.solipendientes()
+            bandera=True
+        elif opciones ==4:
+            fn.vermensajes()
+            bandera=True
+        elif opciones ==5:
+            fn.enviarmensajes()
+            bandera=True
+        elif opciones ==6:
+            fn.gustonencomun()
+            bandera=True
+        elif opciones == 7:
+            fn.cerrarsesion()
+            bandera=True
+        elif opcion!=1 and opcion!=2 and opcion!=3 and opcion!=4 and opcion!=5 and opcion!=6 and opcion!=7:
+                print ("Opción no válida! Intenta de nuevo con de las opciones válidas porfavor! ")
+                print("Hola ", user, " a Redix. Selecione el número de la operación que desea realizar: ")
+                print("¿Que deseas hacer hoy? ")
+                print("(1) Ver usuarios registrados") 
+                print("(2) Enviar  solicitudes de amistad")
+                print("(3) Ver solicitudes de amistad pendientes") 
+                print("(4) Ver mis mensajes")
+                print("(5) Enviar mensaje a un amigo")
+                print("(6) Ver amigos recomendados")
+                print("(7) Cerrar sesion")
+                opciones=int(input())
      
         
 def verusuarios(): #Lista de los nombres de los usuarios registrados en la red social
