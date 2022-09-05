@@ -8,6 +8,7 @@ opcion=int(input())
 while ban==False:
     if opcion==1:
         fn.signin()
+        fn.menu()
         ban=True
     elif opcion==2:
         fn.login()
