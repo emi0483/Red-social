@@ -1,6 +1,7 @@
 
+
 users=[]
-def signin(): #Registro
+def signin(valido): #Registro
     '''
     Funcion con el objetivo de hacer el registro de usuarios.
     Los procesos realizados adentro de esta funcion son:
@@ -17,19 +18,20 @@ def signin(): #Registro
                     
     '''
     
-    print ("Bienvenid@ a Redix. En este Porfavor llena el formulario para realizar tu registro.")
     
     print ("Recuerde que no debe incluir números ni caractéres especiales.")
     user_name=input("Ingrese su nombre de usuario: ")
     bususer = open(users.txt, "r")
     datos = bususer.read().split(":")
-    for user_name in datos
-        while user_name!=datos
-        break
+    for user_name in datos:
+        while user_name!=datos:
+            break
         
         
-    archivo.close()
+    users.close()
     
+
+
     #USAR PARA VALIDAR SI ES UN NUMERO O NO, ADEMAS DE QUE LOGRA VERIFICAR TAMBIEN SIMBOLOS COSAS QUE LAS 
         # FUNCIONES is.. no nos permiten.
     #ban=False
@@ -43,16 +45,12 @@ def signin(): #Registro
     #total = num1 + 100
     #print("The result is ", total)
     
-    #while user_name.isalpha() == False: #Comprobacion de texto 
-        #print ("Recuerde que no debe incluir números ni caractéres especiales.")
-        #user_name=input("Ingrese su nombre de usuario: ")
+    while user_name.isalpha() == False: #Comprobación de texto 
+        print ("Recuerde que no debe incluir números ni caractéres especiales.")
+        user_name=input("Ingrese su nombre de usuario: ")
     name=input("Nombre: ")
     lastname=input("Apellido: ")
-    print ("Recuerde que no debe incluir números ni caractéres especiales.")
     age=input("Edad:")
-    
-    
-    
     
     numg = int(input("Inserte el numero de gustos que desea ingresar"))
     gustos= []
@@ -62,15 +60,20 @@ def signin(): #Registro
         gustos.append(gusto)
 
     user_name=("Nombre de usuario (los números y los caracteres especiales no están permitidos): ")
-    passw=("Contraseña: ")
-    valpassw=("Contraseña nuevamente: ")
-  
+    while user_name!="": #Mientras el campo del user_name no esté vacío
+         #verificar si el nombre de usuario no está siendo usado por alguien más
+         #Usa la funcion verificar_username, que retorna True si el user name puede ser usar y False si no.
+         #El programa continua si y solo si la funcion verificar_username retorna True, es decir, si y solo si el nombre de usuario es válido.
+         #verusuarios  es la función que almacena los nuevos nombres de usuario en la lista verusuarios (tienen el mismo nombre)
+         while verificar_username(verusuarios)==True:
+            passw=("Contraseña: ")
+            valpassw=("Contraseña nuevamente: ")
+            userinfo=[name, lastname,age,gustos[0-i],user_name,passw]
+            return userinfo[0-i]
+            
+
+
     
-    userinfo = open('users.txt', 'a')
-    userinfo.write(user_name + ";" + passw + "\n")
-    userinfo.close()
-    
-    return userinfo[0-i]
 
 def UserName(): #Toma de la lista de la infomación de cada usuario el username escogido y retorna este username.
     username=signin.userinfo[5]
@@ -81,7 +84,10 @@ def valpassword(passw,valpassw): #Validacion de contraseñar para Log in
         print("Las contraseñas no coinciden. Verifique.")
     
 def login(): #Ingresar
-    
+    user_name=input("Ingrese su nombre de usuario:")
+    for user in users:
+
+    passw=input("Ingrese su contraseña: ")
     '''
     Esta funcion nos permite realizar el inicio de sesion de un usuario
     
@@ -109,14 +115,20 @@ def verificar_username(verusuarios):
     #Esta función recibe el nombre de username que desea usar un nuevo usuario y verifica que no esté siendo usado por alguien más.
     newusername=UserName()
     for i in verusuarios:
-        if newusername==verusuarios[i]
+        if newusername==verusuarios[i]:
+            print("El nombre de usuario ingresado ya existe, porfavor intente con uno diferente. ")
+            valido=False
+        else:
+            valido=True 
+    return valido   
 
 
 def enviarsolicitudesdeamistad(): #Envio de solicitudes a base de lista de amigos
     pass
 
 def listaamigos(): #Informacion almacenada en la lista de amigos
-    pass
+    listaamigos=[]
+    return listaamigos[0-i]
 
 def solipendientes():#Muestra las solicitudes de amistad y permite aceptarlas o rechazarlas
     pass
@@ -131,6 +143,4 @@ def enviarmensajes(): #Permite enviar imagenes a tus amigos
     pass
 
 def cerrarsesion(): #Cierra sesion y guarda informacion
-    guardarinfo = open('userData.txt', 'wr')
-    guardarinfo.close()
     pass
