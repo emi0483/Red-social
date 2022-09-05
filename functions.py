@@ -35,13 +35,16 @@ def signin(): #Registro
     #total = num1 + 100
     #print("The result is ", total)
     
-    while user_name.isalpha() == False: #Comprobacion de texto 
-        print ("Recuerde que no debe incluir números ni caractéres especiales.")
-        user_name=input("Ingrese su nombre de usuario: ")
+    #while user_name.isalpha() == False: #Comprobacion de texto 
+        #print ("Recuerde que no debe incluir números ni caractéres especiales.")
+        #user_name=input("Ingrese su nombre de usuario: ")
     name=input("Nombre: ")
     lastname=input("Apellido: ")
     print ("Recuerde que no debe incluir números ni caractéres especiales.")
     age=input("Edad:")
+    
+    
+    
     
     numg = int(input("Inserte el numero de gustos que desea ingresar"))
     gustos= []
@@ -53,7 +56,12 @@ def signin(): #Registro
     user_name=("Nombre de usuario (los números y los caracteres especiales no están permitidos): ")
     passw=("Contraseña: ")
     valpassw=("Contraseña nuevamente: ")
-    userinfo=[name, lastname,age,gustos[0-i],user_name,passw]
+  
+    
+    userinfo = open('users.txt', 'a')
+    userinfo.write(user_name + ";" + passw + "\n")
+    userinfo.close()
+    
     return userinfo[0-i]
 
 def UserName(): #Toma de la lista de la infomación de cada usuario el username escogido y retorna este username.
