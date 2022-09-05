@@ -1,4 +1,3 @@
-import funciones
 import funciones as fn
 ban=False
 print("Bienvenid@ a Redix. Selecione el número de la operación que desea realizar: ")
