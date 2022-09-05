@@ -18,7 +18,7 @@ def signin(valido): #Registro
     
     print ("Recuerde que no debe incluir números ni caractéres especiales.")
     user_name=input("Ingrese su nombre de usuario: ")
-    bususer = open(users.txt, "r")
+    bususer = open('users.txt', "r")
     datos = bususer.read().split(":")
     for user_name in datos:
         while user_name!=datos:
