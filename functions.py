@@ -1,6 +1,3 @@
-
-
-users=[]
 def signin(valido): #Registro
     '''
     Funcion con el objetivo de hacer el registro de usuarios.
