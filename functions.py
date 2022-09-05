@@ -82,6 +82,8 @@ def UserName(): #Toma de la lista de la infomación de cada usuario el username 
 def valpassword(passw,valpassw): #Validacion de contraseñar para Log in
     if passw!=valpassw:
         print("Las contraseñas no coinciden. Verifique.")
+:
+    
     
 def login(): #Ingresar
     user_name=input("Ingrese su nombre de usuario:")
@@ -99,10 +101,7 @@ def login(): #Ingresar
     #Si la clave coincide acceder al menu
 
 def menu(): #Aqui podremos ver todo el menu de la redsocial que se activa despues de iniciar sesion
-     verusuarios()
-     listaamigos()
-     solipendientes()
-     #Ver amigoss recomendados por gustos
+     
         
 def verusuarios(): #Lista de los nombres de los usuarios registrados en la red social
     users=[]
