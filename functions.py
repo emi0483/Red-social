@@ -1,3 +1,4 @@
+
 users=[]
 def signin(): #Registro
     '''
@@ -114,4 +115,6 @@ def enviarmensajes(): #Permite enviar imagenes a tus amigos
     pass
 
 def cerrarsesion(): #Cierra sesion y guarda informacion
+    guardarinfo = open('userData.txt', 'wr')
+    guardarinfo.close()
     pass
