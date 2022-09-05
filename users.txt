@@ -1,4 +1,3 @@
-*nombre:amigo1,amigo2,...,amigon,<solicitud1,solicitud2,...,solicitudn>
-{gusto1,gusto2,...,guston}
-mensaje1
-mensaje2
+nombre;contraseña
+nombre;contraseña
+nombre;contraseña
