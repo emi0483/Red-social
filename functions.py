@@ -21,6 +21,14 @@ def signin(): #Registro
     
     print ("Recuerde que no debe incluir números ni caractéres especiales.")
     user_name=input("Ingrese su nombre de usuario: ")
+    bususer = open(users.txt, "r")
+    datos = bususer.read().split(":")
+    for user_name in datos
+        while user_name!=datos
+        break
+        
+        
+    archivo.close()
     
     #USAR PARA VALIDAR SI ES UN NUMERO O NO, ADEMAS DE QUE LOGRA VERIFICAR TAMBIEN SIMBOLOS COSAS QUE LAS 
         # FUNCIONES is.. no nos permiten.
