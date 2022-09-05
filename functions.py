@@ -1,5 +1,4 @@
-import main.py
-
+users=[]
 def signin(): #Registro
     '''
     Funcion con el objetivo de hacer el registro de usuarios.
@@ -38,7 +37,6 @@ def signin(): #Registro
     while user_name.isalpha() == False: #Comprobacion de texto 
         print ("Recuerde que no debe incluir números ni caractéres especiales.")
         user_name=input("Ingrese su nombre de usuario: ")
-    
     name=input("Nombre: ")
     lastname=input("Apellido: ")
     print ("Recuerde que no debe incluir números ni caractéres especiales.")
@@ -47,13 +45,19 @@ def signin(): #Registro
     numg = int(input("Inserte el numero de gustos que desea ingresar"))
     gustos= []
     print("Ingrese por favor su(s) ", {numg},"gusto(s): ")
-    for i range(numg):
-        gusto = input(Cuentanos uno de tus gustos)
+    for i in range(numg):
+        gusto = input("Cuentanos uno de tus gustos: ")
         gustos.append(gusto)
 
     user_name=("Nombre de usuario (los números y los caracteres especiales no están permitidos): ")
     passw=("Contraseña: ")
     valpassw=("Contraseña nuevamente: ")
+    userinfo=[name, lastname,age,gustos[0-i],user_name,passw]
+    return userinfo[0-i]
+
+def UserName(): #Toma de la lista de la infomación de cada usuario el username escogido y retorna este username.
+    username=signin.userinfo[5]
+    return username
     
 def valpassword(passw,valpassw): #Validacion de contraseñar para Log in
     if passw!=valpassw:
@@ -78,7 +82,18 @@ def menu(): #Aqui podremos ver todo el menu de la redsocial que se activa despue
      #Ver amigoss recomendados por gustos
         
 def verusuarios(): #Lista de los nombres de los usuarios registrados en la red social
-    pass
+    users=[]
+    #Almacena en la lista los nuevos usernames
+    #Retorna la lista de los nombres de usuario actualizada
+    return users
+
+def verificar_username(verusuarios): 
+    #Recibe como argumento la lista donde se almancenan todos los nombres de usuario registrados
+    #Esta función recibe el nombre de username que desea usar un nuevo usuario y verifica que no esté siendo usado por alguien más.
+    newusername=UserName()
+    for i in verusuarios:
+        if newusername==verusuarios[i]
+
 
 def enviarsolicitudesdeamistad(): #Envio de solicitudes a base de lista de amigos
     pass
