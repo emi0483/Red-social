@@ -1,4 +1,6 @@
-def signin(valido): #Registro
+import funciones as fn
+
+def signin(): #Registro
     '''
     Funcion con el objetivo de hacer el registro de usuarios.
     Los procesos realizados adentro de esta funcion son:
@@ -18,17 +20,13 @@ def signin(valido): #Registro
     
     print ("Recuerde que no debe incluir números ni caractéres especiales.")
     user_name=input("Ingrese su nombre de usuario: ")
-    bususer = open('users.txt', "r")
-    datos = bususer.read().split(":")
-    for user_name in datos:
-        while user_name!=datos:
-            break
-        
-        
-    users.close()
-    
-
-
+    #bususer = open('users.txt', "r")
+    #datos = bususer.read().split(":")
+    #for user_name in datos:
+    #    while user_name!=datos:
+    #        break
+    #users.close()
+    #------------------------
     #USAR PARA VALIDAR SI ES UN NUMERO O NO, ADEMAS DE QUE LOGRA VERIFICAR TAMBIEN SIMBOLOS COSAS QUE LAS 
         # FUNCIONES is.. no nos permiten.
     #ban=False
@@ -65,8 +63,9 @@ def signin(valido): #Registro
          while verificar_username(verusuarios)==True:
             passw=("Contraseña: ")
             valpassw=("Contraseña nuevamente: ")
-            userinfo=[name, lastname,age,gustos[0-i],user_name,passw]
-            return userinfo[0-i]
+            userinfo=[name, lastname,age,map(gustos),user_name,passw] #La función 'map()' permite mostrar todos los elemetos al interior de una lista.
+            print(map(userinfo))
+            return map(userinfo)
             
 
 
@@ -79,13 +78,13 @@ def UserName(): #Toma de la lista de la infomación de cada usuario el username 
 def valpassword(passw,valpassw): #Validacion de contraseñar para Log in
     if passw!=valpassw:
         print("Las contraseñas no coinciden. Verifique.")
-:
+
     
     
 def login(): #Ingresar
     user_name=input("Ingrese su nombre de usuario:")
     for user in users:
-
+        verificar_username()
     passw=input("Ingrese su contraseña: ")
     '''
     Esta funcion nos permite realizar el inicio de sesion de un usuario
@@ -97,7 +96,7 @@ def login(): #Ingresar
     #Verificar si la clave coincide
     #Si la clave coincide acceder al menu
 
-def menu(): #Aqui podremos ver todo el menu de la redsocial que se activa despues de iniciar sesion
+def menu(user): #Aqui podremos ver todo el menu de la redsocial que se activa despues de iniciar sesion
     bandera= False
     print("Hola ", user, " a Redix. Selecione el número de la operación que desea realizar: ")
     print("¿Que deseas hacer hoy? ")
@@ -131,7 +130,7 @@ def menu(): #Aqui podremos ver todo el menu de la redsocial que se activa despue
         elif opciones == 7:
             fn.cerrarsesion()
             bandera=True
-        elif opcion!=1 and opcion!=2 and opcion!=3 and opcion!=4 and opcion!=5 and opcion!=6 and opcion!=7:
+        elif opciones!=1 and opciones!=2 and opciones!=3 and opciones!=4 and opciones!=5 and opciones!=6 and opciones!=7:
                 print ("Opción no válida! Intenta de nuevo con de las opciones válidas porfavor! ")
                 print("Hola ", user, " a Redix. Selecione el número de la operación que desea realizar: ")
                 print("¿Que deseas hacer hoy? ")
@@ -146,7 +145,6 @@ def menu(): #Aqui podremos ver todo el menu de la redsocial que se activa despue
      
         
 def verusuarios(): #Lista de los nombres de los usuarios registrados en la red social
-    users=[]
     #Almacena en la lista los nuevos usernames
     #Retorna la lista de los nombres de usuario actualizada
     return users
@@ -169,7 +167,7 @@ def enviarsolicitudesdeamistad(): #Envio de solicitudes a base de lista de amigo
 
 def listaamigos(): #Informacion almacenada en la lista de amigos
     listaamigos=[]
-    return listaamigos[0-i]
+    return listaamigos[:-1]
 
 def solipendientes():#Muestra las solicitudes de amistad y permite aceptarlas o rechazarlas
     pass
