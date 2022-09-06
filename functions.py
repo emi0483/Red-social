@@ -43,6 +43,9 @@ def signin(): #Registro
     while user_name.isalpha() == False: #Comprobación de texto 
         print ("Recuerde que no debe incluir números ni caractéres especiales.")
         user_name=input("Ingrese su nombre de usuario: ")
+    verificar_username()
+    if verificar_username()==True:
+        print ("Nombre de usuario válido. Bienvenid@ a Redix @",user_name)
     name=input("Nombre: ")
     lastname=input("Apellido: ")
     age=input("Edad:")
@@ -144,22 +147,21 @@ def menu(user): #Aqui podremos ver todo el menu de la redsocial que se activa de
                 opciones=int(input())
      
         
-def verusuarios(): #Lista de los nombres de los usuarios registrados en la red social
-    #Almacena en la lista los nuevos usernames
-    #Retorna la lista de los nombres de usuario actualizada
-    return users
+def verusuarios(): #Los nombres de los usuarios registrados en la red social
+    #Almacena en el  archivo users.txt los nuevos usernames
 
-def verificar_username(verusuarios): 
+    return
+
+def verificar_username(): 
     #Recibe como argumento la lista donde se almancenan todos los nombres de usuario registrados
     #Esta función recibe el nombre de username que desea usar un nuevo usuario y verifica que no esté siendo usado por alguien más.
     newusername=UserName()
-    for i in verusuarios:
-        if newusername==verusuarios[i]:
+    valido=False
+    for line in 'users.txt':
+        if newusername==line:
             print("El nombre de usuario ingresado ya existe, porfavor intente con uno diferente. ")
-            valido=False
-        else:
-            valido=True 
-    return valido   
+    valido=True        
+    return 
 
 
 def enviarsolicitudesdeamistad(): #Envio de solicitudes a base de lista de amigos
