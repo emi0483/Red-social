@@ -1,5 +1,6 @@
 import funciones as fn
 import main as mn
+users=[]
 
 def signin(): #Registro
     '''
@@ -66,7 +67,11 @@ def signin(): #Registro
             userinfo=[name, lastname,age,map(gustos),user_name,passw] #La función 'map()' permite mostrar todos los elemetos al interior de una lista.
             print(map(userinfo))
             return map(userinfo)
-            
+
+def add_username(users,username):
+    users.append(username)
+    return
+        
 def verificar_username(): 
     #Recibe como argumento la lista donde se almancenan todos los nombres de usuario registrados
     #Esta función recibe el nombre de username que desea usar un nuevo usuario y verifica que no esté siendo usado por alguien más.
