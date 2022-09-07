@@ -27,16 +27,6 @@ def signin(): #Registro
     #        break
     #users.close()
     #------------------------
-    #ban=False
-    #while not ban:
-        #try:
-            #num1 = int(input("\nEnter a number: "))
-            #ban=True
-        #except ValueError:
-            #print ("The entry is not an int number. Please try again")
-            
-    #total = num1 + 100
-    #print("The result is ", total)
     
     while user_name.isalpha() == False: #Comprobación de texto 
         print ("Recuerde que no debe incluir números ni caractéres especiales.")
