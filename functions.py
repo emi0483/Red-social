@@ -1,4 +1,5 @@
 import funciones as fn
+import main as mn
 
 def signin(): #Registro
     '''
@@ -16,8 +17,6 @@ def signin(): #Registro
                 2.3 Almacenar la informacion.
                     
     '''
-    
-    
     print ("Recuerde que no debe incluir números ni caractéres especiales.")
     user_name=input("Ingrese su nombre de usuario: ")
     #bususer = open('users.txt', "r")
@@ -27,8 +26,6 @@ def signin(): #Registro
     #        break
     #users.close()
     #------------------------
-    #USAR PARA VALIDAR SI ES UN NUMERO O NO, ADEMAS DE QUE LOGRA VERIFICAR TAMBIEN SIMBOLOS COSAS QUE LAS 
-        # FUNCIONES is.. no nos permiten.
     #ban=False
     #while not ban:
         #try:
@@ -70,20 +67,26 @@ def signin(): #Registro
             print(map(userinfo))
             return map(userinfo)
             
+def verificar_username(): 
+    #Recibe como argumento la lista donde se almancenan todos los nombres de usuario registrados
+    #Esta función recibe el nombre de username que desea usar un nuevo usuario y verifica que no esté siendo usado por alguien más.
+    newusername=UserName()
+    valido=False
+    for line in 'users.txt':
+        if newusername==line:
+            print("El nombre de usuario ingresado ya existe, porfavor intente con uno diferente. ")
+    valido=True        
+    return 
 
-
-    
+def valpassword(passw,valpassw): #Validacion de contraseñar para Log in
+    if passw!=valpassw:
+        print("Las contraseñas no coinciden. Verifique.")    
 
 def UserName(): #Toma de la lista de la infomación de cada usuario el username escogido y retorna este username.
     username=signin.userinfo[5]
     return username
     
-def valpassword(passw,valpassw): #Validacion de contraseñar para Log in
-    if passw!=valpassw:
-        print("Las contraseñas no coinciden. Verifique.")
 
-    
-    
 def login(): #Ingresar
     user_name=input("Ingrese su nombre de usuario:")
     for user in users:
@@ -152,18 +155,6 @@ def verusuarios(): #Los nombres de los usuarios registrados en la red social
 
     return
 
-def verificar_username(): 
-    #Recibe como argumento la lista donde se almancenan todos los nombres de usuario registrados
-    #Esta función recibe el nombre de username que desea usar un nuevo usuario y verifica que no esté siendo usado por alguien más.
-    newusername=UserName()
-    valido=False
-    for line in 'users.txt':
-        if newusername==line:
-            print("El nombre de usuario ingresado ya existe, porfavor intente con uno diferente. ")
-    valido=True        
-    return 
-
-
 def enviarsolicitudesdeamistad(): #Envio de solicitudes a base de lista de amigos
     pass
 
@@ -183,5 +174,13 @@ def vermensajes():
 def enviarmensajes(): #Permite enviar imagenes a tus amigos
     pass
 
+def guardarinfo(mensaje):
+    with open('userData.txt', 'a') as archivo:
+        archivo.write(mensaje)
+        
 def cerrarsesion(): #Cierra sesion y guarda informacion
-    pass
+# Escribe un mensaje en un fichero
+
+    cierre = open('users.txt', "r")
+    UserData.txt
+    print ("Fin de la sesion \n Gracias por usar Redix") 
