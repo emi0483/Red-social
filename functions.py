@@ -80,18 +80,19 @@ def valpassword(passw,valpassw): #Validacion de contraseñar para Log in
 def UserName(): #Toma de la lista de la infomación de cada usuario el username escogido y retorna este username.
     username=signin.userinfo[5]
     return username
+def cargarinfo(): 
+    # El objetivo de esta funcion es es extraer los datos del archivo en caso de que el usuario ya este registrado
     
-
 def login(): #Ingresar
     user_name=input("Ingrese su nombre de usuario:")
     for user in users:
         verificar_username()
     passw=input("Ingrese su contraseña: ")
-    '''
-    Esta funcion nos permite realizar el inicio de sesion de un usuario
     
-    '''
     #Buscar que el username ingresado no exista en la base de datos
+    
+    i
+    else: 
     #Si este no ha sido ingresadopedir la contraseña
     #Si ya esta registrado pedir la clave
     #Verificar si la clave coincide
@@ -168,14 +169,18 @@ def vermensajes():
 
 def enviarmensajes(): #Permite enviar imagenes a tus amigos
     pass
-
-def guardarinfo(mensaje):
-    with open('userData.txt', 'a') as archivo:
-        archivo.write(mensaje)
         
 def cerrarsesion(): #Cierra sesion y guarda informacion
 # Escribe un mensaje en un fichero
 
-    cierre = open('users.txt', "r")
-    UserData.txt
-    print ("Fin de la sesion \n Gracias por usar Redix") 
+    verisalida = int(input("¿Esta seguro que desea cerrar sesion? \n 1.Si, deseo cerrar sesion. \n 2.No. deseo continuar con mi sesion abierta."))
+    if verisalida = 1:
+        cierre = open('users.txt', "r")
+        
+        print ("Fin de la sesion \n Gracias por usar Redix")
+        cierre.close()
+    elif verisalida = 2:
+    elif verisalida !=1 and opciones!=2:
+                          verisalida= int(input("¿Esta seguro que desea cerrar?"))
+                          
+         
