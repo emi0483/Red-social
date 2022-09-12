@@ -1,5 +1,3 @@
-import funciones as fn
-import main as mn
 users=[]
 
 def signin(): #Registro
@@ -20,14 +18,11 @@ def signin(): #Registro
     '''
     print ("Recuerde que no debe incluir números ni caractéres especiales.")
     user_name=input("Ingrese su nombre de usuario: ")
-    #bususer = open('users.txt', "r")
-    #datos = bususer.read().split(":")
-    #for user_name in datos:
-    #    while user_name!=datos:
-    #        break
-    #users.close()
-    #------------------------
-    
+    verificar_username()
+    while verificar_username()==False:
+        user_name=input("Ingrese su nombre de usuario: ")
+    return
+
     while user_name.isalpha() == False: #Comprobación de texto 
         print ("Recuerde que no debe incluir números ni caractéres especiales.")
         user_name=input("Ingrese su nombre de usuario: ")
@@ -37,41 +32,35 @@ def signin(): #Registro
     name=input("Nombre: ")
     lastname=input("Apellido: ")
     age=input("Edad:")
-    
+        
     numg = int(input("Inserte el numero de gustos que desea ingresar"))
     gustos= []
     print("Ingrese por favor su(s) ", {numg},"gusto(s): ")
     for i in range(numg):
         gusto = input("Cuentanos uno de tus gustos: ")
         gustos.append(gusto)
-
-    user_name=("Nombre de usuario (los números y los caracteres especiales no están permitidos): ")
-    while user_name!="": #Mientras el campo del user_name no esté vacío
-         #verificar si el nombre de usuario no está siendo usado por alguien más
-         #Usa la funcion verificar_username, que retorna True si el user name puede ser usar y False si no.
-         #El programa continua si y solo si la funcion verificar_username retorna True, es decir, si y solo si el nombre de usuario es válido.
-         #verusuarios  es la función que almacena los nuevos nombres de usuario en la lista verusuarios (tienen el mismo nombre)
-         while verificar_username(verusuarios)==True:
-            passw=("Contraseña: ")
-            valpassw=("Contraseña nuevamente: ")
-            userinfo=[name, lastname,age,map(gustos),user_name,passw] #La función 'map()' permite mostrar todos los elemetos al interior de una lista.
-            print(map(userinfo))
-            return map(userinfo)
+        passw=("Contraseña: ")
+        valpassw=("Contraseña nuevamente: ")
+        userinfo=[name, lastname,age,map(gustos),user_name,passw] #La función 'map()' permite mostrar todos los elemetos al interior de una lista.
+        print(map(userinfo))
+        return map(userinfo)
 
 def add_username(users,username):
     users.append(username)
     return
         
 def verificar_username(): 
-    #Recibe como argumento la lista donde se almancenan todos los nombres de usuario registrados
     #Esta función recibe el nombre de username que desea usar un nuevo usuario y verifica que no esté siendo usado por alguien más.
-    newusername=UserName()
     valido=False
-    for line in 'users.txt':
-        if newusername==line:
-            print("El nombre de usuario ingresado ya existe, porfavor intente con uno diferente. ")
-    valido=True        
-    return 
+    bususer = open('users.txt', "r")
+    datos = bususer.read().split(":")
+    for user_name in datos:
+        while user_name==datos:
+            valido=True
+        print("El nombre de usuario ingresado ya existe, porfavor intente con uno diferente. ")
+        return valido         
+    
+    
 
 def valpassword(passw,valpassw): #Validacion de contraseñar para Log in
     if passw!=valpassw:
@@ -82,7 +71,7 @@ def UserName(): #Toma de la lista de la infomación de cada usuario el username 
     return username
 def cargarinfo(): 
     # El objetivo de esta funcion es es extraer los datos del archivo en caso de que el usuario ya este registrado
-    
+   pass 
 def login(): #Ingresar
     user_name=input("Ingrese su nombre de usuario:")
     for user in users:
@@ -90,9 +79,6 @@ def login(): #Ingresar
     passw=input("Ingrese su contraseña: ")
     
     #Buscar que el username ingresado no exista en la base de datos
-    
-    i
-    else: 
     #Si este no ha sido ingresadopedir la contraseña
     #Si ya esta registrado pedir la clave
     #Verificar si la clave coincide
@@ -112,25 +98,25 @@ def menu(user): #Aqui podremos ver todo el menu de la redsocial que se activa de
     opciones=int(input())
     while bandera == False:
         if opciones==1:
-            fn.verusuarios()
+            verusuarios()
             bandera=True
         elif opciones==2:
-            fn.enviarsolicitudesdeamistad()
+            enviarsolicitudesdeamistad()
             bandera=True
         elif opciones ==3:
-            fn.solipendientes()
+            solipendientes()
             bandera=True
         elif opciones ==4:
-            fn.vermensajes()
+            vermensajes()
             bandera=True
         elif opciones ==5:
-            fn.enviarmensajes()
+            enviarmensajes()
             bandera=True
         elif opciones ==6:
-            fn.gustonencomun()
+            gustosencomun()
             bandera=True
         elif opciones == 7:
-            fn.cerrarsesion()
+            cerrarsesion()
             bandera=True
         elif opciones!=1 and opciones!=2 and opciones!=3 and opciones!=4 and opciones!=5 and opciones!=6 and opciones!=7:
                 print ("Opción no válida! Intenta de nuevo con de las opciones válidas porfavor! ")
@@ -182,4 +168,4 @@ def cerrarsesion(): #Cierra sesion y guarda informacion
     elif verisalida == 2:
         if verisalida !=1 and verisalida!=2:
             verisalida= int(input("¿Esta seguro que desea cerrar?"))
-         
+                          
