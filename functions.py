@@ -174,13 +174,12 @@ def cerrarsesion(): #Cierra sesion y guarda informacion
 # Escribe un mensaje en un fichero
 
     verisalida = int(input("¿Esta seguro que desea cerrar sesion? \n 1.Si, deseo cerrar sesion. \n 2.No. deseo continuar con mi sesion abierta."))
-    if verisalida = 1:
+    if verisalida == 1:
         cierre = open('users.txt', "r")
         
         print ("Fin de la sesion \n Gracias por usar Redix")
         cierre.close()
-    elif verisalida = 2:
-    elif verisalida !=1 and opciones!=2:
-                          verisalida= int(input("¿Esta seguro que desea cerrar?"))
-                          
+    elif verisalida == 2:
+        if verisalida !=1 and verisalida!=2:
+            verisalida= int(input("¿Esta seguro que desea cerrar?"))
          
