@@ -2,18 +2,7 @@ users=[]
 
 def signin(): #Registro
     '''
-    Funcion con el objetivo de hacer el registro de usuarios.
-    Los procesos realizados adentro de esta funcion son:
-        - Pedirle al cliente que ponga su usuario y con esta toma opciones si:
-            1. Hace parte de los usuarios ya registrados y por tanto no es posible registrarlo.
-                1.1 Preguntar al usuario si desea acceder al menu de ingresor.
-            2. No hace parte de los usarios registrados.
-                2.1 El usuario ingresado no cumple con las caracteristicas solicitadas.
-                2.2 El usuario ingresado es correcto.
-                    2.2.1 Pedir la contraseña al usuario y al verificarla esta sea la misma
-                    2.2.2 Pedir la lista de gustos del usuario
-                        Pedir al usuario
-                2.3 Almacenar la informacion.
+    Registrar el usuario (Guardar datos como contraseña, nombre de usuario y gustos).
                     
     '''
     print ("Recuerde que no debe incluir números ni caractéres especiales.")
@@ -45,10 +34,18 @@ def signin(): #Registro
         return map(userinfo)
 
 def add_username(users,username):#Esta función recibe la lista de usuarios users y el retorno username de la funcion 
+    '''
+    Añadir el nombre de usuario a una lista.
+                    
+    '''
     users.append(username)
     return
         
 def verificar_username(): 
+    '''
+    Evalúa el nombre de usuario y verifica si existe o no, en caso de que no pida usar uno nuevo.
+                    
+    '''
     #Esta función recibe el nombre de username que desea usar un nuevo usuario y verifica que no esté siendo usado por alguien más.
     valido=False
     username=input("Ingrese su nombre de usuario: ")
@@ -64,10 +61,17 @@ def verificar_username():
     
 
 def valpassword(passw,valpassw): #Validacion de contraseñar para Log in
+    '''
+    Valida que la contraseñas sean iguales para realizar el registro y también el ingreso.
+
+    '''
     if passw!=valpassw:
         print("Las contraseñas no coinciden. Verifique.")    
 
 def UserName(): #Toma de la lista de la infomación de cada usuario el username escogido y retorna este username.
+    '''
+    Busca la información del documento donde se guarda la información del username escogido.
+    '''
     username=signin.userinfo[5]
     return username
 
