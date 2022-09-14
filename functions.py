@@ -70,9 +70,7 @@ def valpassword(passw,valpassw): #Validacion de contraseñar para Log in
 def UserName(): #Toma de la lista de la infomación de cada usuario el username escogido y retorna este username.
     username=signin.userinfo[5]
     return username
-def cargarinfo(): 
-    # El objetivo de esta funcion es es extraer los datos del archivo en caso de que el usuario ya este registrado
-   pass 
+
 def login(): #Ingresar
     user_name=input("Ingrese su nombre de usuario:")
     for user in users:
@@ -144,7 +142,10 @@ def solipendientes():#Muestra las solicitudes de amistad y permite aceptarlas o 
     pass
 
 def gustosencomun(): #Compara los gustos del usuario y lo recomienda como amigos si son similares
-    pass
+    signin()
+    gustos=signin.userinfo[3]
+    for i in gustos:
+        return
 
 def vermensajes():
     pass
