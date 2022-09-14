@@ -32,7 +32,6 @@ def signin(): #Registro
     name=input("Nombre: ")
     lastname=input("Apellido: ")
     age=input("Edad:")
-        
     numg = int(input("Inserte el numero de gustos que desea ingresar"))
     gustos= []
     print("Ingrese por favor su(s) ", {numg},"gusto(s): ")
@@ -45,19 +44,20 @@ def signin(): #Registro
         print(map(userinfo))
         return map(userinfo)
 
-def add_username(users,username):
+def add_username(users,username):#Esta función recibe la lista de usuarios users y el retorno username de la funcion 
     users.append(username)
     return
         
 def verificar_username(): 
     #Esta función recibe el nombre de username que desea usar un nuevo usuario y verifica que no esté siendo usado por alguien más.
     valido=False
-    bususer = open('users.txt', "r")
+    bususer = open('users.txt', 'r')
     datos = bususer.read().split(":")
     for user_name in datos:
         while user_name==datos:
             valido=True
-        print("El nombre de usuario ingresado ya existe, porfavor intente con uno diferente. ")
+        else:
+            print("El nombre de usuario ingresado ya existe, porfavor intente con uno diferente. ")
         return valido         
     
     
@@ -131,11 +131,6 @@ def menu(user): #Aqui podremos ver todo el menu de la redsocial que se activa de
                 print("(7) Cerrar sesion")
                 opciones=int(input())
      
-        
-def verusuarios(): #Los nombres de los usuarios registrados en la red social
-    #Almacena en el  archivo users.txt los nuevos usernames
-
-    return
 
 def enviarsolicitudesdeamistad(): #Envio de solicitudes a base de lista de amigos
     pass
