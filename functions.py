@@ -51,14 +51,15 @@ def add_username(users,username):#Esta función recibe la lista de usuarios user
 def verificar_username(): 
     #Esta función recibe el nombre de username que desea usar un nuevo usuario y verifica que no esté siendo usado por alguien más.
     valido=False
-    bususer = open('users.txt', 'r')
-    datos = bususer.read().split(":")
-    for user_name in datos:
-        while user_name==datos:
-            valido=True
-        else:
-            print("El nombre de usuario ingresado ya existe, porfavor intente con uno diferente. ")
-        return valido         
+    username=input("Ingrese su nombre de usuario: ")
+    for i in users:
+        while valido!=False:
+            if username==i:
+                print("El nombre de usuario ingresado ya existe, intente con uno distinto. ")
+                username=input("Ingrese su nombre de usuario: ")
+    valido=True
+    users.append(username)
+    return valido           
     
     
 
