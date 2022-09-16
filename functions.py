@@ -42,15 +42,17 @@ def verificar_username():
     '''
     #Esta función recibe el nombre de username que desea usar un nuevo usuario y verifica que no esté siendo usado por alguien más.
     valido=False
-    username=input("Ingrese su nombre de usuario: ")
-    for i in users:
-        while valido!=False:
+    while valido==False:
+        for i in users:
             if username==i:
                 print("El nombre de usuario ingresado ya existe, intente con uno distinto. ")
-                username=input("Ingrese su nombre de usuario: ")
-    valido=True
-    users.append(username)
-    return valido         
+                username=input("Ingrese su nombre de usuario: ")    
+            break
+            valido=True
+            users.append(username)
+            print ("Nombre de usuario válido. Bienvenid@ a Redix @",username)
+            return
+    
     
     
 
