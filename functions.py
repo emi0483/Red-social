@@ -5,23 +5,17 @@ def signin(): #Registro
     Registrar el usuario (Guardar datos como contraseña, nombre de usuario y gustos).
                     
     '''
-    print ("Recuerde que no debe incluir números ni caractéres especiales.")
     user_name=input("Ingrese su nombre de usuario: ")
-    verificar_username()
-    while verificar_username()==False:
-        user_name=input("Ingrese su nombre de usuario: ")
-    return
-
     while user_name.isalpha() == False: #Comprobación de texto 
         print ("Recuerde que no debe incluir números ni caractéres especiales.")
         user_name=input("Ingrese su nombre de usuario: ")
-    verificar_username()
-    if verificar_username()==True:
-        print ("Nombre de usuario válido. Bienvenid@ a Redix @",user_name)
+    while verificar_username(user_name)==False:
+        user_name=input("Ingrese su nombre de usuario: ")
+
     name=input("Nombre: ")
     lastname=input("Apellido: ")
     age=input("Edad:")
-    numg = int(input("Inserte el numero de gustos que desea ingresar"))
+    numg = int(input("Inserte el numero de gustos que desea ingresar: "))
     gustos= []
     print("Ingrese por favor su(s) ", {numg},"gusto(s): ")
     for i in range(numg):
@@ -29,10 +23,10 @@ def signin(): #Registro
         gustos.append(gusto)
         passw=("Contraseña: ")
         valpassw=("Contraseña nuevamente: ")
-        userinfo=[name, lastname,age,map(gustos),user_name,passw] #La función 'map()' permite mostrar todos los elemetos al interior de una lista.
-        print(map(userinfo))
-        return map(userinfo)
-
+        userinfo=[name, lastname,age,map(signin(),gustos),user_name,passw] #La función 'map()' permite mostrar todos los elemetos al interior de una lista.
+        print(map(signin(),userinfo))
+        return map(signin,userinfo)
+    
 def add_username(users,username):#Esta función recibe la lista de usuarios users y el retorno username de la funcion 
     '''
     Añadir el nombre de usuario a una lista.
