@@ -5,27 +5,31 @@ def signin(): #Registro
     Registrar el usuario (Guardar datos como contraseña, nombre de usuario y gustos).
                     
     '''
-    user_name=input("Ingrese su nombre de usuario: ")
+    user_name_a=""
+
+    user_name=input("Ingrese nombre del usuario: ")
     while user_name.isalpha() == False: #Comprobación de texto 
         print ("Recuerde que no debe incluir números ni caractéres especiales.")
-        user_name=input("Ingrese su nombre de usuario: ")
-    while verificar_username(user_name)==False:
-        user_name=input("Ingrese su nombre de usuario: ")
-
-    name=input("Nombre: ")
-    lastname=input("Apellido: ")
-    age=input("Edad:")
-    numg = int(input("Inserte el numero de gustos que desea ingresar: "))
-    gustos= []
-    print("Ingrese por favor su(s) ", {numg},"gusto(s): ")
-    for i in range(numg):
-        gusto = input("Cuentanos uno de tus gustos: ")
-        gustos.append(gusto)
-        passw=("Contraseña: ")
-        valpassw=("Contraseña nuevamente: ")
+    numg=0
+    while verificar_username(user_name)==True:
+        user_name_a=user_name
+        name=input("Nombre: ")
+        lastname=input("Apellido: ")
+        age=input("Edad:")
+        passw=input("Contraseña: ")
+        valpassw=input("Contraseña nuevamente: ")
+        while (valpassword(passw,valpassw)==True):
+            numg = int(input("Inserte el numero de gustos que desea ingresar: "))
+            gustos= []        
+            print("Ingrese por favor su(s) ", {numg},"gusto(s): ")
+            for i in range(numg):
+                gusto = input("Cuentanos uno de tus gustos: ")
+                gustos.append(gusto)
+        
+                
+        map_var=map(signin(),userinfo)        
         userinfo=[name, lastname,age,map(signin(),gustos),user_name,passw] #La función 'map()' permite mostrar todos los elemetos al interior de una lista.
-        print(map(signin(),userinfo))
-        return map(signin,userinfo)
+        return map_var
     
 def add_username(users,username):#Esta función recibe la lista de usuarios users y el retorno username de la funcion 
     '''
@@ -35,26 +39,24 @@ def add_username(users,username):#Esta función recibe la lista de usuarios user
     users.append(username)
     return
         
-def verificar_username(): 
+
     '''
     Evalúa el nombre de usuario y verifica si existe o no, en caso de que no pida usar uno nuevo.
                     
     '''
     #Esta función recibe el nombre de username que desea usar un nuevo usuario y verifica que no esté siendo usado por alguien más.
-    def verificar_username(username): #Esta función recibe el nombre de username que desea usar un nuevo usuario y verifica que no esté siendo usado por alguien más.
+
+def verificar_username(username): #Esta función recibe el nombre de username que desea usar un nuevo usuario y verifica que no esté siendo usado por alguien más.
     valido=False
     while(valido==False):
-        user_name=input("Ingrese nombre del usuario: ")
-        validar=user_name in users
+        validar=username in users
         if(validar):
-            print(f"si se encuentra en la lista {users}")
+            print("El nombre de usuario no es válido. Intente nuevamente con uno diferente. ")
         else:
-            print(f"no esta en la lista {users}")
-            users.append(user_name)
-        valido=True
-    return users
-    
-    
+            print("El nombre de usuario es válido. Bienvenid@ a REDIX.")
+            users.append(username)
+            valido=True
+    return valido
     
 
 def valpassword(passw,valpassw): #Validacion de contraseñar para Log in
@@ -63,7 +65,8 @@ def valpassword(passw,valpassw): #Validacion de contraseñar para Log in
 
     '''
     if passw!=valpassw:
-        print("Las contraseñas no coinciden. Verifique.")    
+        print("Las contraseñas no coinciden. Verifique.")
+        return    
 
 def UserName(): #Toma de la lista de la infomación de cada usuario el username escogido y retorna este username.
     '''
@@ -98,7 +101,7 @@ def menu(user): #Aqui podremos ver todo el menu de la redsocial que se activa de
     opciones=int(input())
     while bandera == False:
         if opciones==1:
-            verusuarios()
+            #verusuarios()
             bandera=True
         elif opciones==2:
             enviarsolicitudesdeamistad()
