@@ -25,21 +25,25 @@ def signin(): #Registro
             for i in range(numg):
                 gusto = input("Cuentanos uno de tus gustos: ")
                 gustos.append(gusto)
+            add_username_pass(user_name,passw)
+            break
         
                 
         map_var=map(signin(),userinfo)        
         userinfo=[name, lastname,age,map(signin(),gustos),user_name,passw] #La función 'map()' permite mostrar todos los elemetos al interior de una lista.
         return map_var
     
-def add_username(users,username):#Esta función recibe la lista de usuarios users y el retorno username de la funcion 
+def add_username_pass(username, passw):#Esta función recibe la lista de usuarios users y el retorno username de la funcion 
     '''
     Añadir el nombre de usuario a una lista.
                     
     '''
-    users.append(username)
+    file=open("users.txt",'a')
+    file.write(username)
+    file.write(";")
+    file.write(passw)
+    file.write("\n")
     return
-        
-
     '''
     Evalúa el nombre de usuario y verifica si existe o no, en caso de que no pida usar uno nuevo.
                     
@@ -59,14 +63,17 @@ def verificar_username(username): #Esta función recibe el nombre de username qu
     return valido
     
 
-def valpassword(passw,valpassw): #Validacion de contraseñar para Log in
+def valpassword(passw,valpassw): #Validacion de contraseñar para sign in
+    valido=False
     '''
     Valida que la contraseñas sean iguales para realizar el registro y también el ingreso.
 
     '''
     if passw!=valpassw:
         print("Las contraseñas no coinciden. Verifique.")
-        return    
+    else:
+        valido=True
+        return valido
 
 def UserName(): #Toma de la lista de la infomación de cada usuario el username escogido y retorna este username.
     '''
@@ -168,5 +175,4 @@ def cerrarsesion(): #Cierra sesion y guarda informacion
         cierre.close()
     elif verisalida == 2:
         if verisalida !=1 and verisalida!=2:
-            verisalida= int(input("¿Esta seguro que desea cerrar?"))
-                          
+            verisalida= int(input("¿Esta seguro que desea cerrar?"))          
