@@ -5,12 +5,10 @@ def signin(): #Registro
     Registrar el usuario (Guardar datos como contraseña, nombre de usuario y gustos).
                     
     '''
-    user_name_a=""
 
     user_name=input("Ingrese nombre del usuario: ")
     while user_name.isalpha() == False: #Comprobación de texto 
         print ("Recuerde que no debe incluir números ni caractéres especiales.")
-    numg=0
     ban=False
     while ban==False:
         while verificar_username(user_name)==True:
