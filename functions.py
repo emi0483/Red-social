@@ -11,24 +11,28 @@ def signin(): #Registro
     while user_name.isalpha() == False: #Comprobación de texto 
         print ("Recuerde que no debe incluir números ni caractéres especiales.")
     numg=0
-    while verificar_username(user_name)==True:
-        user_name_a=user_name
-        name=input("Nombre: ")
-        lastname=input("Apellido: ")
-        age=input("Edad:")
-        passw=input("Contraseña: ")
-        valpassw=input("Contraseña nuevamente: ")
-        while (valpassword(passw,valpassw)==True):
-            numg = int(input("Inserte el numero de gustos que desea ingresar: "))
-            gustos= []        
-            print("Ingrese por favor su(s) ", {numg},"gusto(s): ")
-            for i in range(numg):
-                gusto = input("Cuentanos uno de tus gustos: ")
-                gustos.append(gusto)
-            add_username_pass(user_name,passw)
-            break
-        
-                
+    ban=False
+    while ban==False:
+        while verificar_username(user_name)==True:
+            ban1=True
+            ngus=0
+            name=input("Nombre: ")
+            lastname=input("Apellido: ")
+            age=input("Edad: ")
+            passw=input("Contraseña: ")
+            valpassw=input("Contraseña nuevamente: ")
+            while (ban1==True):
+                if (valpassword(passw,valpassw)==True):
+                    ngus=0
+                    gustos=[]
+                    while ngus<3:
+                        gusto=input("¿Que te gustaría ver?: ")
+                        ngus+=1
+                        gustos.append(gusto)
+                    ban1=False
+
+
+                               
         map_var=map(signin(),userinfo)        
         userinfo=[name, lastname,age,map(signin(),gustos),user_name,passw] #La función 'map()' permite mostrar todos los elemetos al interior de una lista.
         return map_var
@@ -64,16 +68,15 @@ def verificar_username(username): #Esta función recibe el nombre de username qu
     
 
 def valpassword(passw,valpassw): #Validacion de contraseñar para sign in
-    valido=False
-    '''
-    Valida que la contraseñas sean iguales para realizar el registro y también el ingreso.
-
-    '''
-    if passw!=valpassw:
-        print("Las contraseñas no coinciden. Verifique.")
-    else:
-        valido=True
-        return valido
+    ban=False
+    while (ban==False):
+        while (passw!=valpassw):
+            print ("No válida.")
+            passw=input("Contraseña: ")
+            valpassw=input("Verificar contraseña: ")
+        print("Contraseña válida.")
+        ban=True
+    return True
 
 def UserName(): #Toma de la lista de la infomación de cada usuario el username escogido y retorna este username.
     '''
@@ -175,4 +178,4 @@ def cerrarsesion(): #Cierra sesion y guarda informacion
         cierre.close()
     elif verisalida == 2:
         if verisalida !=1 and verisalida!=2:
-            verisalida= int(input("¿Esta seguro que desea cerrar?"))          
+            verisalida= int(input("¿Esta seguro que desea cerrar?"))
