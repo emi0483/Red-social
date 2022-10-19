@@ -5,13 +5,10 @@ def signin(): #Registro
     Registrar el usuario (Guardar datos como contraseña, nombre de usuario y gustos).
                     
     '''
-
-    user_name=input("Ingrese nombre del usuario: ")
-    while user_name.isalpha() == False: #Comprobación de texto 
-        print ("Recuerde que no debe incluir números ni caractéres especiales.")
     ban=False
     while ban==False:
-        while verificar_username(user_name)==True:
+        user_name=input("Ingrese su nombre de usuario: ")
+        if verificar_username(user_name)==True:
             ban1=True
             ngus=0
             name=input("Nombre: ")
@@ -28,19 +25,31 @@ def signin(): #Registro
                         ngus+=1
                         gustos.append(gusto)
                     ban1=False
-
-
-                               
-        map_var=map(signin(),userinfo)        
-        userinfo=[name, lastname,age,map(signin(),gustos),user_name,passw] #La función 'map()' permite mostrar todos los elemetos al interior de una lista.
-        return map_var
+                    ban=True
+    add_username_pass(user_name,passw)
+    #filling_userData(user_name,name,lastname,passw,valpassw,age,friends,gustos)
+    return 
     
+def filling_userData(username,name,lastname,passw,valpassw,age,friends,gustos):
+    file=open("userData.txt",'a')
+    file.write(username)
+    file.write(":")
+    for i in friends:
+        file.write(i)
+        file.write(",")
+    file.write("\n")
+    file.write("{")
+    for j in gustos:
+        file.write(j)
+        file.write(",")
+
 def add_username_pass(username, passw):#Esta función recibe la lista de usuarios users y el retorno username de la funcion 
     '''
     Añadir el nombre de usuario a una lista.
                     
     '''
     file=open("users.txt",'a')
+    file.write("\n")
     file.write(username)
     file.write(";")
     file.write(passw)
@@ -52,17 +61,32 @@ def add_username_pass(username, passw):#Esta función recibe la lista de usuario
     '''
     #Esta función recibe el nombre de username que desea usar un nuevo usuario y verifica que no esté siendo usado por alguien más.
 
-def verificar_username(username): #Esta función recibe el nombre de username que desea usar un nuevo usuario y verifica que no esté siendo usado por alguien más.
-    valido=False
-    while(valido==False):
-        validar=username in users
-        if(validar):
-            print("El nombre de usuario no es válido. Intente nuevamente con uno diferente. ")
-        else:
-            print("El nombre de usuario es válido. Bienvenid@ a REDIX.")
-            users.append(username)
-            valido=True
-    return valido
+def verificar_username(user_name): #Esta función recibe el nombre de username que desea usar un nuevo usuario y verifica que no esté siendo usado por alguien más.
+    while user_name.isalpha() == False: #Comprobación de texto 
+        user_name=input("Ingrese su nombre de usuario: ")
+        print ("Recuerde que no debe incluir números ni caractéres especiales.")
+    username=[]
+    for z in user_name:
+        username.append(z)
+    ban=False
+    file=open("users.txt","r")
+    while ban==False:
+        for i in file:
+            word=[]
+            for j in i:
+                if j!=";":
+                    word.append(j)
+                else:
+                    break
+            if username==word:
+                print("El nombre de usuario ya existe. Intente con uno distinto. ")
+                user_name=input("Ingrese su nombre de usuario: ")
+                username=[]
+                for z in user_name:
+                    username.append(z)   
+        ban=True
+        print("Nombre de usuario válido. Bienvenid@ a REDIX")
+    return True
     
 
 def valpassword(passw,valpassw): #Validacion de contraseñar para sign in
@@ -76,17 +100,36 @@ def valpassword(passw,valpassw): #Validacion de contraseñar para sign in
         ban=True
     return True
 
-def UserName(): #Toma de la lista de la infomación de cada usuario el username escogido y retorna este username.
-    '''
-    Busca la información del documento donde se guarda la información del username escogido.
-    '''
-    username=signin.userinfo[5]
-    return username
+def verificar_username_login(user_name): #Esta función recibe el nombre de username que desea usar un nuevo usuario y verifica que no esté siendo usado por alguien más.
+    while user_name.isalpha() == False: #Comprobación de texto 
+        user_name=input("Ingrese su nombre de usuario: ")
+        print ("Recuerde que no debe incluir números ni caractéres especiales.")
+    username=[]
+    for z in user_name:
+        username.append(z)
+    ban=False
+    file=open("users.txt","r")
+    while ban==False:
+        for i in file:
+            word=[]
+            for j in i:
+                if j!=";":
+                    word.append(j)
+                else:
+                    break
+            if username==word:
+                ban=True
+                break
+        print("El nombre de usuario no está registrado. Verifique e intente nuevamente. ")
+        user_name=input("Ingrese su nombre de usuario: ")
+        username=[]
+        for z in user_name:
+            username.append(z)
+    return True
 
 def login(): #Ingresar
-    user_name=input("Ingrese su nombre de usuario:")
-    for user in users:
-        verificar_username()
+    user_name=input("Ingrese su nombre de usuario: ")
+    verificar_username_login(user_name)
     passw=input("Ingrese su contraseña: ")
     
     #Buscar que el username ingresado no exista en la base de datos
@@ -153,9 +196,8 @@ def listaamigos(): #Informacion almacenada en la lista de amigos
 def solipendientes():#Muestra las solicitudes de amistad y permite aceptarlas o rechazarlas
     pass
 
-def gustosencomun(): #Compara los gustos del usuario y lo recomienda como amigos si son similares
+def gustosencomun(gustos): #Compara los gustos del usuario y lo recomienda como amigos si son similares
     signin()
-    gustos=signin.userinfo[3]
     for i in gustos:
         return
 
