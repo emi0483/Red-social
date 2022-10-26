@@ -1,5 +1,5 @@
 users=[]
-
+global user_name, passw, loginpassw
 def signin(): #Registro
     '''
     Registrar el usuario (Guardar datos como contraseña, nombre de usuario y gustos).
@@ -26,31 +26,61 @@ def signin(): #Registro
                         gustos.append(gusto)
                     ban1=False
                     ban=True
-    add_username_pass(user_name,passw)
-    #filling_userData(user_name,name,lastname,passw,valpassw,age,friends,gustos)
+    add_username_pass(user_name,passw)                
+    next=input("Su registro ha finalizado exitosamente. ¿Desea iniciar sesion? (Si/No)")
+    if next=="si" or next=="Si":
+        login()
+    elif next=="no" or next=="No":
+        print("Vuelva pronto.")
+    filling_userData(user_name,gustos)
     return 
-    
-def filling_userData(username,name,lastname,passw,valpassw,age,friends,gustos):
+
+def find_user_in_userData(user_name): #retorna i para obtener amigos y solicitudes pendientes del usuario 
+    userdata=open("userData.txt","r")
+    username=[]
+    user=[]
+    for z in user_name:
+        user.append(z)
+    for i in userdata:
+        if i[0]=="*":
+            for j in i:
+                if j=="*":
+                    pass
+                else:
+                    if j!=":":
+                        username.append(j)
+                    else:
+                        if user==username:
+                            print ("found")
+                        else:
+                            username=[]
+                        break
+        else:
+            pass
+    return i
+
+def welcome_redix(user_name,name,lastname):
+    return
+
+def filling_userData(user_name,gustos):
     file=open("userData.txt",'a')
-    file.write(username)
+    file.write("\n")
+    file.write(user_name)
     file.write(":")
-    for i in friends:
-        file.write(i)
-        file.write(",")
     file.write("\n")
     file.write("{")
     for j in gustos:
         file.write(j)
         file.write(",")
 
-def add_username_pass(username, passw):#Esta función recibe la lista de usuarios users y el retorno username de la funcion 
+def add_username_pass(user_name, passw):#Esta función recibe la lista de usuarios users y el retorno username de la funcion 
     '''
     Añadir el nombre de usuario a una lista.
                     
     '''
     file=open("users.txt",'a')
     file.write("\n")
-    file.write(username)
+    file.write(user_name)
     file.write(";")
     file.write(passw)
     file.write("\n")
@@ -80,13 +110,9 @@ def verificar_username(user_name): #Esta función recibe el nombre de username q
                     break
             if username==word:
                 print("El nombre de usuario ya existe. Intente con uno distinto. ")
-                user_name=input("Ingrese su nombre de usuario: ")
-                username=[]
-                for z in user_name:
-                    username.append(z)   
-        ban=True
+                return False
         print("Nombre de usuario válido. Bienvenid@ a REDIX")
-    return True
+        return True
     
 
 def valpassword(passw,valpassw): #Validacion de contraseñar para sign in
@@ -100,7 +126,7 @@ def valpassword(passw,valpassw): #Validacion de contraseñar para sign in
         ban=True
     return True
 
-def verificar_username_login(user_name): #Esta función recibe el nombre de username que desea usar un nuevo usuario y verifica que no esté siendo usado por alguien más.
+def verificar_login(user_name,passw): #Esta función recibe el nombre de username que desea usar un nuevo usuario y verifica que no esté siendo usado por alguien más.
     while user_name.isalpha() == False: #Comprobación de texto 
         user_name=input("Ingrese su nombre de usuario: ")
         print ("Recuerde que no debe incluir números ni caractéres especiales.")
@@ -112,35 +138,45 @@ def verificar_username_login(user_name): #Esta función recibe el nombre de user
     while ban==False:
         for i in file:
             word=[]
+            countpospass=0
             for j in i:
                 if j!=";":
                     word.append(j)
                 else:
+                    countpospass+=1
+                    loginpassw=i[countpospass:-1]
+                    loginban=False
+                    while loginban==False:
+                        if passw==loginpassw:
+                            print("sameeee")
+                            loginban=True
+                        else: 
+                            print("Incorrecto, intente nuevamente.")
+                            passw=input("Passw: ")
                     break
             if username==word:
                 ban=True
                 break
-        print("El nombre de usuario no está registrado. Verifique e intente nuevamente. ")
-        user_name=input("Ingrese su nombre de usuario: ")
-        username=[]
-        for z in user_name:
-            username.append(z)
+        if username!=word: 
+            print("El nombre de usuario no está registrado. Verifique e intente nuevamente. ")
+            return False
     return True
 
-def login(): #Ingresar
-    user_name=input("Ingrese su nombre de usuario: ")
-    verificar_username_login(user_name)
-    passw=input("Ingrese su contraseña: ")
-    
-    #Buscar que el username ingresado no exista en la base de datos
-    #Si este no ha sido ingresadopedir la contraseña
-    #Si ya esta registrado pedir la clave
-    #Verificar si la clave coincide
-    #Si la clave coincide acceder al menu
 
-def menu(user): #Aqui podremos ver todo el menu de la redsocial que se activa despues de iniciar sesion
+def login(): #Ingresar
+    ban=False
+    while ban==False:
+        user_name=input("Ingrese su nombre de usuario: ")
+        passw=input("Ingresa tu contraseña")
+        if verificar_login(user_name,passw)==True:
+            ban=True    
+            return True   
+    
+    
+
+def menu(user_name): #Aqui podremos ver todo el menu de la redsocial que se activa despues de iniciar sesion
     bandera= False
-    print("Hola ", user, " a Redix. Selecione el número de la operación que desea realizar: ")
+    print("Hola ", user_name, " a Redix. Selecione el número de la operación que desea realizar: ")
     print("¿Que deseas hacer hoy? ")
     print("(1) Ver usuarios registrados") 
     print("(2) Enviar  solicitudes de amistad")
@@ -174,7 +210,7 @@ def menu(user): #Aqui podremos ver todo el menu de la redsocial que se activa de
             bandera=True
         elif opciones!=1 and opciones!=2 and opciones!=3 and opciones!=4 and opciones!=5 and opciones!=6 and opciones!=7:
                 print ("Opción no válida! Intenta de nuevo con de las opciones válidas porfavor! ")
-                print("Hola ", user, " a Redix. Selecione el número de la operación que desea realizar: ")
+                print("Hola ", user_name, " a Redix. Selecione el número de la operación que desea realizar: ")
                 print("¿Que deseas hacer hoy? ")
                 print("(1) Ver usuarios registrados") 
                 print("(2) Enviar  solicitudes de amistad")
